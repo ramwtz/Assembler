@@ -4,9 +4,16 @@ The final project for university C lab programming course.
 Receives an assembly file through the command line interface, and outputs an object file and if needed ext and ent files.
 Made on ubuntu x64, run successfully on ubuntu x32 and windows x64 (makefile with minGW).
 
+## Building the program
+
+Included in the project are source files and a makefile.
+To build on Linux simply run the command "make" in the kernel while in the project directory.
+For windows there are a couple of options, see [this stack overflow thread](https://stackoverflow.com/questions/2532234/how-to-run-a-makefile-in-windows)
+The project was ran successfully on windows using minGW.
+
 ## Running the program
 
-Included in the project are the source files, and sample assembly (.asm) files with expected output in a subfolder.
+Included in the project are sample assembly (.asm) files with expected output in a subfolder.
 
 ### Example run:
 
