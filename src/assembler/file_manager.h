@@ -69,7 +69,6 @@ int rowLength(FILE *fp);
 /***    error checkers      ***/
 
 /*  check if input file name is of legal type    */
-Error checkInputFileName(char *fileName);
 
 /*  check if input file isn't empty    */
 Error checkInputFileContent(FILE *fp);

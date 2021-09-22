@@ -29,13 +29,12 @@ void assembleFile(char *sourceFileName, int sourceFileNumber) {
     struct LocationInFile locInFile = {0, 0};
     locInFile.currentFileNumber = sourceFileNumber;
 
-    /*  check if file is of correct type, stop assembly if not   */    
-    err = checkInputFileName(sourceFileName);
-    if(checkIfError(err, &locInFile, &continueAssembly))
-        return;
-    
-    /*  open local file to read source code   */
+    /*  open file to read source code   */
     srcfp = fopen(sourceFileName, "r");
+    if(srcfp == NULL) {
+        perror("Unable to read file.\nTerminating.\n");
+        exit(EXIT_FAILURE);
+    }
 
     /*  check if file isn't empty, stop assembly if not   */    
     err = checkInputFileContent(srcfp);

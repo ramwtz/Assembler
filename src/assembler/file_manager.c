@@ -53,7 +53,7 @@ FILE* createFile(char* fileName) {
 
     fp = fopen(fileName, "w");
     if(fp == NULL){
-       perror("unable to open\n");
+        perror("Unable to read file.\nTerminating.\n");
         exit(EXIT_FAILURE);
     }
 
@@ -144,16 +144,6 @@ int rowLength(FILE* fp) {
 }   
 
 /***    Error Handling      ***/
-
-Error checkInputFileName(char* fileName) {
-    int length = strlen(fileName);
-    char* tempP = fileName;
-    tempP += length - 3;
-    
-    if(strcmp(tempP, ".as"))
-        return er_illegal_file_type;
-    return er_no_error;
-}
 
 Error checkInputFileContent(FILE* fp) {
     if(isFileEmpty(fp))
