@@ -1,6 +1,6 @@
 # Assembler
 ## Index
-<a src=#hi> hello </a>
+<a src=#hi> [hello](#hi) </a>
 
 ## Overview
 The final project for my university C lab programming course.
