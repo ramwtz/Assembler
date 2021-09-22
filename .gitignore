@@ -53,3 +53,7 @@ dkms.conf
 
 # VSCode
 .vscode
+
+#Project
+bin
+build
