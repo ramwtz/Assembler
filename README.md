@@ -6,7 +6,7 @@ Made on ubuntu x64, run successfully on ubuntu x32 and windows x64 (makefile wit
 Included in the project are the source files, and sample assembly (.asm) files with expected output in a subfolder.
 After running the program the output files will appear in the same directory as the sample .asm file.
 
-## running the program
+## Running the program
 
 ### sample1.asm
 
