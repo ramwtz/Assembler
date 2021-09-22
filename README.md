@@ -8,7 +8,7 @@ Made on ubuntu x64, run successfully on ubuntu x32 and windows x64 (makefile wit
 
 Included in the project are source files and a makefile.
 To build on Linux simply run the command "make" in the kernel while in the project directory.
-For windows there are a couple of options, see [this stack overflow thread](https://stackoverflow.com/questions/2532234/how-to-run-a-makefile-in-windows).
+For windows there are a couple of options, see [this stack overflow thread](https://stackoverflow.com/questions/2532234/how-to-run-a-makefile-in-windows). 
 The project was ran successfully on windows using minGW.
 
 ## Running the program
