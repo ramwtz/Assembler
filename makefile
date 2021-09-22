@@ -29,13 +29,8 @@ endif
 
 #commands
 all: dir $(TARGET)
-	@echo $(TARGET)
+	@echo $(TARGET) "Made"
 	@echo;
-	@echo $(SRCS)
-	@echo;
-	@echo $(FILENAMES)
-	@echo;
-	@echo $(OBJS)
 
 dir:
 	@mkdir -p $(BUILDDIR)
@@ -43,9 +38,6 @@ dir:
 
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) $^ -o $@$(EXT)
-	@echo;
-	@echo $@ "Made"
-	@echo;
 
 $(BUILDDIR)/%.o: %.c
 	$(CC) $(CFLAGS) -c  $< -o $@
