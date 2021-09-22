@@ -30,4 +30,4 @@ You'll receive the following three files in the same directory as the sample1.as
 
 If you wish to create your own file to run, here is a table of known commands:
 
-<!-- //TODO -->
+//TODO
