@@ -10,7 +10,7 @@ After running the program the output files will appear in the same directory as 
 
 ![Untitled](https://user-images.githubusercontent.com/83758958/134347802-7926e491-15bb-4121-950b-a1400d27299e.png)
 
-after running *program_path*/Assembler *sample_path*/sample1.asm
+after running *program_path*/Assembler  *sample_path*/sample1.asm
 
 You'll receive the following three files:
 
