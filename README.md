@@ -4,7 +4,7 @@ The final project for my university C lab programming course.
 
 Receives an assembly file through the command line interface, and outputs an object file and if needed ext and ent files.
 
-Made on ubuntu x64, ran successfully on ubuntu x32 and windows x64 (makefile with minGW).
+Made on ubuntu x64, ran successfully on ubuntu x32 and windows x64.
 
 ## Building the program
 
