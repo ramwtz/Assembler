@@ -1,8 +1,10 @@
 # Assembler
 ## Index
-<a src=#hi> [hello](#hi) </a>
+<a src=#hi> [Overview](#hi) </a>
 
-## Overview
+<span id=hi> 
+    <h2> Overview </h2>
+</span> 
 The final project for my university C lab programming course.
 
 Receives an assembly file through the command line interface, and outputs an object file and if needed ext and ent files.
@@ -49,6 +51,4 @@ If you wish to create your own file to run, here is a table of known commands:
 
 //TODO
 
-<span id=hi> 
-    <h2> Overview </h2>
-</span> 
+
