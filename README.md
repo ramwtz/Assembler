@@ -8,7 +8,7 @@ Made on ubuntu x64, run successfully on ubuntu x32 and windows x64 (makefile wit
 
 Included in the project are the source files, and sample assembly (.asm) files with expected output in a subfolder.
 
-### Example run
+### Example run:
 
 #### sample1.asm
 
