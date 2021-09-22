@@ -1,19 +1,20 @@
 # Assembler
+## Overview
 The final project for university C lab programming course.
 Receives an assembly file through the command line interface, and outputs an object file and if needed ext and ent files.
 Made on ubuntu x64, run successfully on ubuntu x32 and windows x64 (makefile with minGW).
 
-Included in the project are the source files, and sample assembly (.asm) files with expected output in a subfolder.
-After running the program the output files will appear in the same directory as the sample .asm file.
-
 ## Running the program
+
+Included in the project are the source files, and sample assembly (.asm) files with expected output in a subfolder.
+For example:
 
 ### sample1.asm
 
 ![Untitled](https://user-images.githubusercontent.com/83758958/134347802-7926e491-15bb-4121-950b-a1400d27299e.png)
 
 After running *program_path*/Assembler    *sample_path*/sample1.asm,
-You'll receive the following three files:
+You'll receive the following three files in the same directory as the sample1.asm file:
 
 ### sample1.ob
 
@@ -26,3 +27,7 @@ You'll receive the following three files:
 ### sample1.ent
 
 ![output3](https://user-images.githubusercontent.com/83758958/134348891-44627727-3e04-49a7-a99a-7357e7a52d6d.png)
+
+If you wish to create your own file to run, here is a table of known commands:
+
+<!-- //TODO -->
