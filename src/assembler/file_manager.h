@@ -1,7 +1,8 @@
 #ifndef FILE_MANAGER_H
 #define FILE_MANAGER_H
 
-/***    include     ***/
+/***    includes     ***/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

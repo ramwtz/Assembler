@@ -1,6 +1,6 @@
 #include "assembler.h"
 
-/*  main assembles all files given in the command line input  */
+/*  main assembles all files given through command line input  */
 int main(int argc, char* argv[]) {
     static int crntSource;
     

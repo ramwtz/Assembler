@@ -1,7 +1,8 @@
 #ifndef UTILITY_H
 #define UTILITY_H
 
-/***    include     ***/
+/***    includes     ***/
+
 #include <stdio.h>
 #include "my_types.h"
 

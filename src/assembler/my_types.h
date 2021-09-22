@@ -1,7 +1,8 @@
 #ifndef MY_TYPES_H
 #define MY_TYPES_H
 
-/***    include     ***/
+/***    includes     ***/
+
 #include <limits.h>
 
 /***  macro definitions   ***/

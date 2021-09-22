@@ -1,7 +1,8 @@
 #ifndef PARSE_H
 #define PARSE_H
 
-/***    include     ***/
+/***    includes     ***/
+
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>

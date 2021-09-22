@@ -1,7 +1,8 @@
 #ifndef BINARY_ENCODER_H
 #define BINARY_ENCODER_H
 
-/***    include     ***/
+/***    includes     ***/
+
 #include <stdio.h>
 #include <string.h>
 #include "utility.h"

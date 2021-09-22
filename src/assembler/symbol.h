@@ -1,7 +1,8 @@
 #ifndef SYMBOL_H
 #define SYMBOL_H
 
-/***    include     ***/
+/***    includes     ***/
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>

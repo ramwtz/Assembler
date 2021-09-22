@@ -1,7 +1,8 @@
 #ifndef ASSEMBLER_H
 #define ASSEMBLER_H
 
-/***    include     ***/
+/***    includes     ***/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
