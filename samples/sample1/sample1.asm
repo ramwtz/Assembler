@@ -1,5 +1,5 @@
-;file ps.as
-;sample source code
+;a couple of
+;comments here
 
 .entry  Next
 .extern wNumber
@@ -13,7 +13,7 @@ LIST:   .db     6,-9
         bgt     $4,$2,END
         la      K
         sw      $0,4,$10
-        bne     $31,$9, LOOP
+        bne     $31, $9,LOOP
         call    val1
         jmp     $4
         la      wNumber

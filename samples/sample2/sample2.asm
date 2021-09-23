@@ -9,7 +9,7 @@ R:    lb      $4,345,$7
       subi    $31,564,$12
       andi    $12,157,$21
       and     $2,$5,$13
-STR:  .asciz  "hi nadav how are you"
+STR:  .asciz  "hi how are you"
 END:    stop
 .entry R
       ori     $1,-234,$23
