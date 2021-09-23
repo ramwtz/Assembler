@@ -14,9 +14,9 @@ The final project for my university programming lab in C course.
 
 Receives an assembly file through the command line interface, and outputs an object file and if needed ext and ent files.
 
-The assembly language used in here was created specifically for the assembler project and is not ment to be linked or run.
+The assembly language used in here was created specifically for the assembler project and is not meant to be linked or run.
 
-Made on ubuntu x64, tested successfully on ubuntu x32 and windows x64.
+Made on ubuntu x64, tested successfully on ubuntu x32 and windows 10 x64.
 
 <hr/>
 <span id=a2> <h2> Building </h2> </span> 
@@ -27,6 +27,11 @@ To build on Linux simply run the command "make" in the kernel while in the proje
 
 For windows there are a couple of options, see [this stack overflow thread](https://stackoverflow.com/questions/2532234/how-to-run-a-makefile-in-windows). 
 The project was ran successfully on windows using minGW.
+
+After runnning make, two new folders, "build" and "bin" will appear, the "build" folder includes all object files, and the "bin" folder includes the executable.
+
+To delete all object files you can run the command "make clean"
+in the command line prompt. This is a must if wanting to re-make, as the existence of object files will confuse the make.
 
 <hr/>
 <span id=a3> <h2> Running </h2> </span> 
