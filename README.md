@@ -62,13 +62,13 @@ You'll receive the following three files in the same directory as the sample1.as
 <hr/>
 <span id=a4> <h2> Assembly Language </h2> </span> 
 
-Literal data types used in the language: 
+Operands used in the language: 
 * Registers ("Reg" in the param list), all of whom are presumed to have 32-bit width. There are 32 available registers (0 - 31), and are denoted with a '$', ie: "$1", "$23", etc.
 * Immediate Integers ("Int_X" in the param list), the assumed size of the param is denoted in buts by the X in the type.
-*  Variables ("Var" in the param list), whom can be user defiened labels or external variables. variable names must begin with a letter and contain only alpha-numerical characters. Labels can be no longer than 31 characters. Labels are unique and can't be redefined. Any label name definition must be followed immediatly by a colon, followed by any legal operation or directive and its parameters. for example: _label-name_**:** *command* *param-list*
+* Lblels ("Lbl" in the param list), whom can be user defiened or external. label names must begin with a letter and contain only alpha-numerical characters. Lblels can be no longer than 31 characters. Lblels are unique and can't be redefined. Any label name definition must be followed immediatly by a colon, followed by any legal operation or directive and its parameters. for example: _label-name_**:** *command* *param-list*
 *  Strings ("Str" in the param list), denoted by intial and terminating quotation marks, with free text contained betwen. 
 
-Types of line statements available in the language:
+Types of statements available in the language:
 * Operations, which are encoded instructions of code given to the machine to execute at run-time. The operation can optionally begin with a label definition.
 * Directives, which instruct the assembler what is must do in regards to the code in the assembly file, creating relevant memory and file assignments before run. The operation can optionally begin with a label definition.
 * Both of the above statements share the syntax: [_label_:] *command-name* *param1*, *param2*, ...
@@ -77,41 +77,42 @@ Types of line statements available in the language:
 
 ### Instruction sets
 
-| Ops    | Parameters    | Function   |
-|--------------|-----------|------------|
-| add | Reg left, Reg right, Reg dest | Sums the content of left and right and stores in dest |
-| sub | Reg left, Reg right, Reg dest | Subtracts the content of right from left and stores in dest |
-| and | Reg left, Reg right, Reg dest | Perform logical AND between left and right, and store result in dest |
-| or  | Reg left, Reg right, Reg dest | Perform logical OR between left and right, and store result in dest |
-| nor | Reg left, Reg right, Reg dest | Perform logical NOR between left and right, and store result in dest |
-| move | Reg src, Reg dest | Replace the content of dest with the content of src |
-| mvhi | Reg src, Reg dest | Replace the content of dest's lowest bits (0-15) with the content of src's highest bits |
-| mvlo | Reg src, Reg dest | Replace the content of dest's highest bits (16-31) with the content of src's lowest bits |
-| addi | Reg left, Int_16 right, Reg dest | See _add_, difference in right operand being literal integer |
-| subi | Reg left, Int_16 right, Reg dest | See _sub_, difference in right operand being literal integer |
-| andi | Reg left, Int_16 right, Reg dest | See _and_, difference in right operand being literal integer |
-| ori | Reg left, Int_16 right, Reg dest | See _or_, difference in right operand being literal integer |
-| nori | Reg left, Int_16 right, Reg dest | See _nor_, difference in right operand being literal integer |
-| bne | Reg left, Reg right, Var dest | Compares the content of left and right, if content is equal jump to dest  |
-| beq | Reg left, Reg right, Var dest | Compares the content of left and right, if content is not equal jump to dest  |
-| blt | Reg left, Reg right, Var dest | Compares the content of left and right, if left's content is smaller than right's, jump to dest |
-| bgt | Reg left, Reg right, Var dest | Compares the content of left and right, if left's content is larger than right's, jump to dest |
-| lb | Reg left, Int_16 right, Reg dest | Sum the content of left register and right integer, and access the memory at the address indicated by sum, storing a byte of memory in dest |
-| sb | Reg left, Int_16 right, Reg dest | Sum the content of left register and right integer, and access the memory at the address indicated by sum, storing in memory a byte's-worth of the lowest bits from dest |
-| lw | Reg left, Int_16 right, Reg dest | Sum the content of left register and right integer, and access the memory at the address indicated by sum, storing four bytes byte of memory in dest |
-| sw | Reg left, Int_16 right, Reg dest | Sum the content of left register and right integer, and access the memory at the address indicated by sum, storing in memory four bytes'-worth of the lowest bits from dest |
-| lh | Reg left, Int_16 right, Reg dest | Sum the content of left register and right integer, and access the memory at the address indicated by sum, storing two bytes of memory in dest |
-| sh | Reg left, Int_16 right, Reg dest | Sum the content of left register and right integer, and access the memory at the address indicated by sum, storing in memory two bytes'-worth of the lowest bits from dest |
-| jmp | Var dest OR Reg dest | Jump to the address of the variable dest, or to the address stored in register dest |
-| la | Var src | Copies to register $0 the address of the var src |
-| call | Var dest | Jump to the address of the variable dest, and stores the address of the operation following the call in register $0 |
-| stop | NONE | Stops the program |
+| Ops    | Parameters    | Function   | Example |
+|--------------|-----------|------------|------------|
+| add | Reg *lhs*, Reg *rhs*, Reg *dest* | Sums the content of *lhs* and *rhs* and stores in *dest* | add $1, $2, $3 |
+| sub | Reg *lhs*, Reg *rhs*, Reg *dest* | Subtracts the content of *rhs* from *lhs* and stores in *dest* | sub $1, $2, $3 |
+| and | Reg *lhs*, Reg *rhs*, Reg *dest* | Perform logical AND between *lhs* and *rhs*, and store result in *dest* | and $1, $2, $3 |
+| or  | Reg *lhs*, Reg *rhs*, Reg *dest* | Perform logical OR between *lhs* and *rhs*, and store result in *dest* | or $1, $2, $3 |
+| nor | Reg *lhs*, Reg *rhs*, Reg *dest* | Perform logical NOR between *lhs* and *rhs*, and store result in *dest* | nor $1, $2, $3 |
+| move | Reg *src*, Reg *dest* | Replace the content of *dest* with the content of *src* | move $1, $2 |
+| mvhi | Reg *src*, Reg *dest* | Replace the content of *dest*'s lowest bits (0-15) with the content of *src*'s highest bits | mvhi $1, $2 |
+| mvlo | Reg *src*, Reg *dest* | Replace the content of *dest*'s highest bits (16-31) with the content of *src*'s lowest bits | mvlo $1, $2 |
+| addi | Reg *lhs*, Int_16 *rhs*, Reg *dest* | See _add_, difference in *rhs* operand being literal integer | addi $1, 100, $3 |
+| subi | Reg *lhs*, Int_16 *rhs*, Reg *dest* | See _sub_, difference in *rhs* operand being literal integer | subi $1, 100, $3 |
+| andi | Reg *lhs*, Int_16 *rhs*, Reg *dest* | See _and_, difference in *rhs* operand being literal integer | andi $1, 100, $3 |
+| ori | Reg *lhs*, Int_16 *rhs*, Reg *dest* | See _or_, difference in *rhs* operand being literal integer | ori $1, 100, $3 |
+| nori | Reg *lhs*, Int_16 *rhs*, Reg *dest* | See _nor_, difference in *rhs* operand being literal integer | nori $1, 100, $3 |
+| bne | Reg *lhs*, Reg *rhs*, Lbl *dest* | Compares the content of *lhs* and *rhs*, if content is equal jump to *dest* | bne $1, $2, MAIN |
+| beq | Reg *lhs*, Reg *rhs*, Lbl *dest* | Compares the content of *lhs* and *rhs*, if content is not equal jump to *dest*  | beg $1, $2, MAIN |
+| blt | Reg *lhs*, Reg *rhs*, Lbl *dest* | Compares the content of *lhs* and *rhs*, if *lhs*'s content is smaller than *rhs*'s, jump to *dest* | blt $1, $2, MAIN |
+| bgt | Reg *lhs*, Reg *rhs*, Lbl *dest* | Compares the content of *lhs* and *rhs*, if *lhs*'s content is larger than *rhs*'s, jump to *dest* | bgt $1, $2, MAIN |
+| lb | Reg *lhs*, Int_16 *rhs*, Reg *dest* | Sum the content of *lhs* register and *rhs* integer, and access the memory at the address indicated by sum, storing a byte of memory in *dest* | lb $1, 100, $2 |
+| sb | Reg *lhs*, Int_16 *rhs*, Reg *dest* | Sum the content of *lhs* register and *rhs* integer, and access the memory at the address indicated by sum, storing in memory a byte's-worth of the lowest bits from *dest* | sb $1, 100, $2 |
+| lw | Reg *lhs*, Int_16 *rhs*, Reg *dest* | Sum the content of *lhs* register and *rhs* integer, and access the memory at the address indicated by sum, storing four bytes byte of memory in *dest* | lw $1, 100, $2 |
+| sw | Reg *lhs*, Int_16 *rhs*, Reg *dest* | Sum the content of *lhs* register and *rhs* integer, and access the memory at the address indicated by sum, storing in memory four bytes'-worth of the lowest bits from *dest* | sw $1, 100, $2 |
+| lh | Reg *lhs*, Int_16 *rhs*, Reg *dest* | Sum the content of *lhs* register and *rhs* integer, and access the memory at the address indicated by sum, storing two bytes of memory in *dest* | lh $1, 100, $2 |
+| sh | Reg *lhs*, Int_16 *rhs*, Reg *dest* | Sum the content of *lhs* register and *rhs* integer, and access the memory at the address indicated by sum, storing in memory two bytes'-worth of the lowest bits from *dest* | sh $1, 100, $2 |
+| jmp | Lbl *dest*  | Jump to the address of *dest* | jmp MAIN |
+| jmp | Reg *dest* | Jump to the address stored in register *dest* | jmp $1 |
+| la | Lbl *src* | Copies to register $0 the address of the var *src* | la MAIN |
+| call | Lbl *dest* | Jump to the address of *dest*, and stores the address of the operation following the call in register $0 | call MAIN |
+| stop | NONE | Stops the program | stop
 
-| Dirs    | Parameters    | Function   |
-|--------------|-----------|------------|
-| .db | Int_8 num1, num1, ... | Stores each num in the param list in memory in 8 bit-width space |
-| .dw | Int_32 num1, num1, ... | Stores each num in the param list in memory in 32 bit-width space |
-| .dh | Int_16 num1, num1, ... | Stores each num in the param list in memory in 16 bit-width space |
-| .asciz | Str "*free text*" | Stores each letter in memory including terminating char |
-| .entry | Var arg | Denotes arg to be an entry point to the program for external code to use, entry var must be declared in the assembly file |
-| .extern | Var arg | Denotes arg to be an external variable, declared outside the file scope |
+| Dirs    | Parameters    | Function   | Example |
+|--------------|-----------|------------|------------|
+| .db | Int_8 *num1*, *num2*, ... | Stores each num in the param list in memory in 8 bit-width space | .db 45, 67, 3, 0 |
+| .dw | Int_32 *num1*, *num2*, ... | Stores each num in the param list in memory in 32 bit-width space | .dw 4598765, 6700, 3, 0 |
+| .dh | Int_16 *num1*, *num2*, ... | Stores each num in the param list in memory in 16 bit-width space | .dh 450, 6786, 8 |
+| .asciz | Str " *free text* " | Stores each letter in memory including terminating char | .asciz "hello world" |
+| .entry | Lbl *arg* | Denotes arg to be an entry point to the program for external code to use, entry var must be declared in the assembly file | .entry MAIN |
+| .extern | Lbl *arg* | Denotes arg to be external, declared outside the file scope | .extern VAR |
