@@ -122,27 +122,6 @@ boolean isFileEmpty(FILE* fp) {
     return !size;
 }
 
-/*  iterates over the row until finding the end, saving the number of chars parsed,
-    and moving the cursor to the begining of the row, finally returning the length  */
-int rowLength(FILE* fp) {
-    int c, count = 0;
-
-    while(TRUE) {
-        c = fgetc(fp);
-        if(c == '\n') {
-            count++;
-            break;
-        }
-        if(c == EOF)
-            break;
-        count++;
-    }
-
-    fseek(fp, -count, SEEK_CUR);
-    
-    return count;
-}   
-
 int fileExtLen(char* fileName) {
     char* cp;
     int count = 0; 

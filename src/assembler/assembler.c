@@ -30,7 +30,7 @@ void assembleFile(char *sourceFileName, int sourceFileNumber) {
     locInFile.currentFileNumber = sourceFileNumber;
 
     /*  open file to read source code   */
-    srcfp = fopen(sourceFileName, "r");
+    srcfp = fopen(sourceFileName, "r+");
     if(srcfp == NULL) {
         perror("Unable to read file.\nTerminating.\n");
         exit(EXIT_FAILURE);
@@ -60,28 +60,33 @@ void assembleFile(char *sourceFileName, int sourceFileNumber) {
 /*  first pass analyzes the source code for syntax mistakes, fills in and manages the symbol table,
     and handles errors and prints them  */
 void firstPass(FILE *srcfp, FileLocP locInFileP, SymTblP symtbl, boolean *continueAssemblyP, MemCountP memCount) {
-    int len, nextFreeInTable = 0;
+    int c, nextFreeInTable = 0;
     char buffer[MAX_LINE_LENGTH];
     Error err;
     
     /*  start at the beginning of the file  */
     fseek(srcfp, 0 ,SEEK_SET);
 
-    /*  iterate over all the lines in the source file   */
-    while(TRUE) {
-        /*  check if row length is over 80 (including white space), if so continue to next row, 
-            if not continue to analysis     */
-        if((len = rowLength(srcfp)) > (MAX_LINE_LENGTH - 1)) {
-            locInFileP->currentLineNumber++;
+    /*  iterate over all the lines in the source file, loading each line to the buffer   */
+    while(fgets(buffer, MAX_LINE_LENGTH, srcfp) != NULL) {
+        /*  checks if line buffered is longer then 80 characters by seeing if the new line wasn't buffered */
+        if(!strchr(buffer, '\n')) {
+            /*  only legal line without new line is the last, and so if the next char is the EOF we've scanned the entire file */
+            if(getc(srcfp) == EOF)
+                break;
+            
+            /*  if line in file is longer than 80 characters, we'll loop throughout the line until its end    */
+            while((c = getc(srcfp)) != '\n' && c != EOF);
+
+            /*  error handling and and continuing to the next line  */
             printError(er_line_longer_then_80_chars, locInFileP);
-            fseek(srcfp, len ,SEEK_CUR);
+            *continueAssemblyP = FALSE;
+            locInFileP->currentLineNumber++;
             continue;
         }
-        
+
         /*  iteratively load each line to the buffer, analyze it, fill in symbols if need be, check for errors,
             and continue to the next line.  */
-        if(fgets(buffer, MAX_LINE_LENGTH, srcfp) == NULL)
-            break;
         analyzeLine(buffer, locInFileP, symtbl, &nextFreeInTable, continueAssemblyP, memCount);
         emptyCharArray(buffer, MAX_LINE_LENGTH);
     }

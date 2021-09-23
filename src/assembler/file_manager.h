@@ -64,15 +64,10 @@ void addLabelToEnt(FILE *entfp, char* label, int address);
 /*  return true if file is empty, false otherwise   */
 boolean isFileEmpty(FILE* fp);
 
-/*  returns the length of the current row   */
-int rowLength(FILE *fp);
-
 /* returns the length of the file extension, used to replace it with output file extensions */
 int fileExtLen(char* fileName);
 
 /***    error checkers      ***/
-
-/*  check if input file name is of legal type    */
 
 /*  check if input file isn't empty    */
 Error checkInputFileContent(FILE *fp);
