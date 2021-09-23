@@ -44,7 +44,7 @@ FileStrctP createFileStruct(char* inputFileName, const char* extension) {
 }
 
 void createFileName(char* dest, char* source, const char* fileExt) {
-    strncpy(dest, source, strlen(source) - LENGTH_OF_SOURCE_EXTENSION);
+    strncpy(dest, source, strlen(source) - fileExtLen(source));
     strcat(dest, fileExt);
 }
 
@@ -142,6 +142,23 @@ int rowLength(FILE* fp) {
     
     return count;
 }   
+
+int fileExtLen(char* fileName) {
+    char* cp;
+    int count = 0; 
+    cp = fileName + strlen(fileName) - 1;
+    while(*cp != '.') {
+        if(*cp == '\\' || *cp == '/') {
+            count = 0;
+            break;
+        }
+
+        count++;
+        cp--;
+    }
+
+    return count;
+}
 
 /***    Error Handling      ***/
 

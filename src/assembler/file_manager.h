@@ -11,7 +11,7 @@
 
 /***    macro definitions   ***/
 
-#define LENGTH_OF_SOURCE_EXTENSION 2
+#define LENGTH_OF_SOURCE_EXTENSION 3
 #define TOTAL_BYTES_IN_ROW 4
 #define FIRST_BYTE_IN_ROW 0
 #define LAST_BYTE_IN_ROW 3
@@ -66,6 +66,9 @@ boolean isFileEmpty(FILE* fp);
 
 /*  returns the length of the current row   */
 int rowLength(FILE *fp);
+
+/* returns the length of the file extension, used to replace it with output file extensions */
+int fileExtLen(char* fileName);
 
 /***    error checkers      ***/
 

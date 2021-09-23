@@ -13,10 +13,10 @@ CC = gcc
 CFLAGS = -Wall -pedantic -ansi -g -I'$(ASSEMBLEDIR)'
 
 #project files
-TARGET := $(BINDIR)/Assembler
-SRCS := $(shell find $(SOURCEDIR) -name '*.c')
-FILENAMES := $(notdir $(SRCS))
-OBJS := $(addprefix $(BUILDDIR)/,$(FILENAMES:.c=.o))
+TARGET = $(BINDIR)/Assembler
+SRCS = $(wildcard $(ASSEMBLEDIR)/*.c) $(SOURCEDIR)/main.c
+FILENAMES = $(notdir $(SRCS))
+OBJS = $(addprefix $(BUILDDIR)/,$(FILENAMES:.c=.o))
 
 # OS specific part
 ifeq ($(OS),Windows_NT)
